@@ -1,0 +1,13 @@
+<ion-view title="Home">
+    <ion-content overflow-scroll="true" padding="true" style="background: url(img/Xx5ebBcKQn6QehV4IgiS_bg.jpg) no-repeat center; background-size: cover" class="has-header">
+        <form class="list">
+            <label class="item item-input" name="search">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="SEARCH" ng-model="searchText">
+            </label>
+        </form>
+        <ion-list>
+           <ion-item ng-repeat="service in services | filter:searchText" ng-click="clicked(service)">{{service.name}}</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

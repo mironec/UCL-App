@@ -12,11 +12,12 @@
         <form class="list" ng-submit="login()">
             <ion-list>
                 <label class="item item-input" name="email">
-                    <input type="email" placeholder="Email">
+                    <input type="email" placeholder="Email" ng-model="form.email">
                 </label>
                 <label class="item item-input" name="password">
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" ng-model="form.password">
                 </label>
+                <span class="item" ng-show="loginErrorShown" style="text-align:center; color:#CC3333;" ng-bind="loginError"></span>
             </ion-list>
             <button id="login-button4" style="border-radius:50px;" class="button button-stable  button-block icon-left ion-log-in">LOG IN</button>
             <a ui-sref="signUp" id="login-button5" style="border-radius:50px;" class="button button-stable  button-block icon-left ion-android-checkmark-circle">SIGN UP</a>

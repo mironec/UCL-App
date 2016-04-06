@@ -7,25 +7,25 @@ angular.module('app.controllers', [])
 
     $scope.clicked = function(service){
     	$state.go('menu.service', {serviceId: service.href});
-    	//$location.path('/'+service.href);
-    	//console.log(service.href);
     }
 })
         
 
       
-.controller('loginCtrl', function($scope, $state, LoginService) {
-	/*if(LoginService.loggedIn){
-		$state.go('menu.home');
-	}*/
-
+.controller('loginCtrl', function($scope, $state, LoginService, $q) {
 	$scope.init = function(){
-
+		$scope.loginErrorShown=false;
+		$scope.form = {};
 	}
 
 	$scope.login = function(){
-		LoginService.setLoggedIn(true);
-		$state.go('menu.home');
+		var deferred = $q.defer();
+
+		LoginService.login(deferred, $scope.form.email, $scope.form.password);
+		deferred.promise.then(
+			function(resolve){$scope.loginErrorShown=false; $state.go('menu.home')},
+			function(reject){$scope.loginError="Error logging in! "+(reject||''); $scope.loginErrorShown=true;}
+		);
 	};
 })
 

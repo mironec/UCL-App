@@ -31,4 +31,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
   $http.get('data/servicesData.json').success(function(data) {
         $rootScope.servicesData = data;
   });
+
+  $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl;
+  $rootScope.backendLoginUrl = b+"/atos/login.php";
+  $rootScope.backendSignupUrl = b+"/atos/signup.php";
 }])

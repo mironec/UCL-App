@@ -1,12 +1,18 @@
 angular.module('app.controllers', [])
   
-.controller('homeCtrl', function($scope, $http, $state) {
-    $http.get('data/services.json').success(function(data) {
+.controller('homeCtrl', function($scope, $http, $state, $rootScope) {
+    /*$http.get('data/services.json').success(function(data) {
         $scope.services = data;
-    });
+    });*/
+	$scope.services = $rootScope.servicesData;
+
+	for(var i=0;i<$scope.services;i++){
+		var o = $scope.services[i];
+		o.sref = o.href.substring(o.href.lastIndexOf('/'),o.href.lastIndexOf('.'));
+	}
 
     $scope.clicked = function(service){
-    	$state.go('menu.service', {serviceId: service.href});
+    	$state.go('menu.service', {serviceId: service.sref});
     }
 })
         
@@ -45,7 +51,7 @@ angular.module('app.controllers', [])
 	$scope.service = {};
 
 	for(var i=0;i<$rootScope.servicesData.length;i++){
-		if($rootScope.servicesData[i].href == $stateParams.serviceId){
+		if($rootScope.servicesData[i].sref == $stateParams.serviceId){
 			$scope.service.data = $rootScope.servicesData[i].data;
 			$scope.service.title = $rootScope.servicesData[i].name;
 		}

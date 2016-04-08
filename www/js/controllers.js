@@ -6,7 +6,7 @@ angular.module('app.controllers', [])
     });*/
 	$scope.services = $rootScope.servicesData;
 
-	for(var i=0;i<$scope.services;i++){
+	for(var i=0;i<$scope.services.length;i++){
 		var o = $scope.services[i];
 		o.sref = o.href.substring(o.href.lastIndexOf('/'),o.href.lastIndexOf('.'));
 	}

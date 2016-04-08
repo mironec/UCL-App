@@ -8,15 +8,17 @@ angular.module('app.services', [])
 
 }])
 
-.factory('LoginService', ['$http','$rootScope',function($http,$rootScope){
+.factory('LoginService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
 	var loggedIn = false;
 	var loginToken = ""; 
 
 	return {
 		isLoggedIn: function(){return loggedIn;},
-		setLoggedIn: function(bool){loggedIn = bool; return this;},
+		setLoggedIn: function(bool){loggedIn = bool; if(bool==false) loginToken=""; return this;},
 		getLoginToken: function(){return loginToken;},
-		login: function(deferred, email, pass){
+		login: function(email, pass){
+			var deferred = $q.defer();
+
 			$http.post($rootScope.backendLoginUrl,{email: email, pass: pass}).then(
 				function(response){
 					if(!(response instanceof Object)) {deferred.reject(); return;}
@@ -34,14 +36,29 @@ angular.module('app.services', [])
 				},
 				function(reject){deferred.reject("Check your internet connection.");}
 			);
+
+			return deferred.promise;
 		}
 	}
 }])
 
-/*.service('LoginService', function(){
+.factory('SignupService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
 	return {
-		loggedIn: false,
-		loginToken: ""
-	}
-})*/;
+		signUp: function(email, pass, name, country){
+			var deferred = $q.defer();
 
+			$http.post($rootScope.backendSignupUrl,{email: email, pass: pass, name: name, country: country}).then(
+				function(response){
+					if(!(response instanceof Object)) {deferred.reject(); return;}
+					var data = response.data;
+					if(data.startsWith("S ")) deferred.resolve(data.substring(2));
+					else if(data.startsWith("E ")) deferred.reject(data.substring(2));
+					else deferred.reject(data);
+				},
+				function(reject){deferred.reject("Check your internet connection.");}
+			);
+
+			return deferred.promise;
+		}
+	}
+}]);

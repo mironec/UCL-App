@@ -12,17 +12,14 @@ angular.module('app.controllers', [])
         
 
       
-.controller('loginCtrl', function($scope, $state, LoginService, $q) {
+.controller('loginCtrl', function($scope, $state, LoginService) {
 	$scope.init = function(){
 		$scope.loginErrorShown=false;
 		$scope.form = {};
-	}
+	};
 
 	$scope.login = function(){
-		var deferred = $q.defer();
-
-		LoginService.login(deferred, $scope.form.email, $scope.form.password);
-		deferred.promise.then(
+		LoginService.login($scope.form.email, $scope.form.password).then(
 			function(resolve){$scope.loginErrorShown=false; $state.go('menu.home')},
 			function(reject){$scope.loginError="Error logging in! "+(reject||''); $scope.loginErrorShown=true;}
 		);
@@ -34,13 +31,14 @@ angular.module('app.controllers', [])
 
 	$scope.init = function(){
 		$scope.loginButtonText = (LoginService.isLoggedIn() ? "LOG OUT" : "LOG IN");
-	}
+	};
+
 	$scope.loginButtonClick = function(){
 		if(!LoginService.isLoggedIn()) $state.go('login');
 		else{
 			LoginService.setLoggedIn(false);
 		}
-	}
+	};
 })
 
 .controller('serviceCtrl', function($scope, $rootScope, $stateParams){
@@ -54,8 +52,29 @@ angular.module('app.controllers', [])
 	}
 })
    
-.controller('signUpCtrl', function($scope) {
+.controller('signUpCtrl', function($scope, SignupService, $ionicPopup, $state) {
+	$scope.form = {};
+	$scope.signupError = "";
+	$scope.signupErrorShown = false;
 
+	$scope.signUp = function(){
+		SignupService.signUp($scope.form.email, $scope.form.password, $scope.form.name, $scope.form.country).then(
+			function(resolve){
+				$scope.signupErrorShown = false;
+
+				var alertPopup = $ionicPopup.alert({
+					title: "Success",
+					template: "Successfully signed up. Please proceed to log in."
+				});
+
+				alertPopup.then(function(res){$state.go('login');});
+			},
+			function(reject){
+				$scope.signupError = "Error signing up! "+(reject||'');
+				$scope.signupErrorShown = true;
+			}
+		);
+	};
 })
    
 .controller('aboutCtrl', function($scope) {

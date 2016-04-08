@@ -34,5 +34,5 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
 
   $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl;
   $rootScope.backendLoginUrl = b+"/atos/login.php";
-  $rootScope.backendSignupUrl = b+"/atos/signup.php";
+  $rootScope.backendSignupUrl = b+"/atos/register.php";
 }])

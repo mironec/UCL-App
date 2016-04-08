@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
 
 	for(var i=0;i<$scope.services.length;i++){
 		var o = $scope.services[i];
-		o.sref = o.href.substring(o.href.lastIndexOf('/'),o.href.lastIndexOf('.'));
+		o.sref = o.href.substring(o.href.lastIndexOf('/')+1,o.href.lastIndexOf('.'));
 	}
 
     $scope.clicked = function(service){

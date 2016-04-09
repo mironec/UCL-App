@@ -7,7 +7,7 @@
             </label>
         </form>
         <ion-list>
-           <ion-item ng-repeat="service in services | filter:searchText" ng-click="clicked(service)">{{service.name}}</ion-item>
+           <ion-item ng-repeat="service in services | filter:searchText | filter:serviceFilter" ng-click="clicked(service)">{{service.name}}</ion-item>
         </ion-list>
     </ion-content>
 </ion-view>

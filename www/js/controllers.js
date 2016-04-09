@@ -5,6 +5,7 @@ angular.module('app.controllers', [])
         $scope.services = data;
     });*/
 	$scope.services = $rootScope.servicesData;
+	$scope.serviceFilter = function(val){return val.parent===undefined;};
 
 	for(var i=0;i<$scope.services.length;i++){
 		var o = $scope.services[i];

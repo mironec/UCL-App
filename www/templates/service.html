@@ -46,7 +46,7 @@ u {
   }
 
 
-input {
+.score input {
   position:absolute;
   top: -2em;
   clip:rect(0,0,0,0);
@@ -93,6 +93,9 @@ input {
   top: 1px;
 }
 
+.ratingForm button{
+  opacity: 1.0;
+}
 </style>
 
 
@@ -129,7 +132,7 @@ input {
       <br>
       <hr>
 
-      <form class="list">
+      <form action="javascript:void(0);" class="list ratingForm">
         <fieldset class="score">
          
           <input type="radio" id="score-5" name="score" value="5"/>
@@ -149,10 +152,11 @@ input {
           
         </fieldset>
 
-        <ion-item>
-          <ion-label stacked>Comment</ion-label>
-          <ion-textarea placeholder="Write your comment here..."></ion-textarea>
-        </ion-item>
+        <label class="item item-input">
+          <textarea placeholder="Comments" rows="8"></textarea>
+        </label>
+
+        <button class="button button-block button-positive">Submit</button>
 
       </form>
 

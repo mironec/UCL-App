@@ -1,10 +1,7 @@
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
 
 .run(['$rootScope', '$state', 'LoginService', '$ionicPlatform', '$http', function($rootScope, $state, LoginService, $ionicPlatform, $http) {
@@ -21,8 +18,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
   });
 
   $rootScope.$on( "$stateChangeStart", function(event, next, current) {
-      if(next.name == "login" && LoginService.loggedIn){
-        console.log($state);
+      if(next.name == "login" && LoginService.loggedIn()){
         event.preventDefault();
         $state.go('menu.home');
       }
@@ -30,6 +26,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
 
   $http.get('data/servicesData.json').success(function(data) {
         $rootScope.servicesData = data;
+        for(var i=0;i<$rootScope.servicesData.length;i++){
+          var o = $rootScope.servicesData[i];
+          o.sref = o.href.substring(o.href.lastIndexOf('/')+1,o.href.lastIndexOf('.'));
+        }
   });
 
   $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl;

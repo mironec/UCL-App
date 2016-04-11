@@ -1,6 +1,7 @@
 /*
 !/.gitignore
 !/www
+!/tests
 /www/lib
 /www/README.md
 /www/IONIC

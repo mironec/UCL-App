@@ -43,7 +43,8 @@ angular.module('app.controllers', [])
 	};
 })
 
-.controller('serviceCtrl', function($scope, $rootScope, $stateParams){
+.controller('serviceCtrl', function($scope, $rootScope, $stateParams, LoginService){
+	$scope.loginService = LoginService;
 	$scope.service = {};
 
 	for(var i=0;i<$rootScope.servicesData.length;i++){

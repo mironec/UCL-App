@@ -63,19 +63,17 @@ angular.module('app.services', [])
 	}
 }])
 
-.factory('RatingService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
+.factory('RatingService', ['$http','$rootScope','$q','LoginService',function($http,$rootScope,$q,LoginService){
 	return {
-		sendRating: function(rating, comment){
+		sendRating: function(serviceId, rating, comment){
 			var deferred = $q.defer();
 
-			$http.post($rootScope.backendRatingUrl,{rating: rating, comment: comment}).then(
+			$http.post($rootScope.backendRatingUrl,{"service_id": serviceId, rating: rating, comment: comment},{headers: {Authorization: "JWT "+LoginService.getLoginToken()}}).then(
 				function(response){
 					if(!(response instanceof Object)) {deferred.reject(); return;}
 					var data = response.data;
-					deferred.resolve(response.data);
-					/*if(data.substring(0,2) == "S ") deferred.resolve(data.substring(2));
-					else if(data.substring(0,2) == "E ") deferred.reject(data.substring(2));
-					else deferred.reject(data);*/
+					if(data.substring(0,2)=='E ') deferred.reject(data.substring(2));
+					else deferred.resolve(data);
 				},
 				function(reject){deferred.reject("Check your internet connection.");}
 			);

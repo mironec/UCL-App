@@ -20,6 +20,11 @@ describe('App.run tests', function(){
 		$httpBackend.when('GET', 'data/servicesData.json').respond('[{"name":"Example service","href":"/example.html","subPages":["/example1.html","example2.html"]},{"name":"Example service - 1","href":"/example1.html","subPages":[],"parent":"example.html"},{"name":"Example service - 2","href":"/example2.html","subPages":[],"parent":"example.html"}]');
 	}));
 
+	afterEach(function(){
+		$httpBackend.verifyNoOutstandingExpectation();
+		$httpBackend.verifyNoOutstandingRequest();
+	});
+
 	describe('something',function(){
 		it('should attach the correct sref', function(){
 			$httpBackend.flush();

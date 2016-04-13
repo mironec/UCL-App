@@ -30,7 +30,7 @@ describe('homeCtrl', function(){
 
 		it('should go to the correct state', function(){
 			$scope.clicked(parentService);
-			expect($state.go).toHaveBeenCalledWith(jasmine.any(String),{serviceId: parentService.sref});
+			expect($state.go).toHaveBeenCalledWith(jasmine.any(String),{serviceSref: parentService.sref});
 		});
 	});
 });

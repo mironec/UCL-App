@@ -40,7 +40,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.service', {
-    url: '/service/:serviceId',
+    url: '/service/:serviceSref',
     views: {
       'side-menu21':{
         templateUrl: 'templates/service.html',

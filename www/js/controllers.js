@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
 	$scope.serviceFilter = function(val){return val.parent===undefined;};
 
     $scope.clicked = function(service){
-    	$state.go('menu.service', {serviceId: service.sref});
+    	$state.go('menu.service', {serviceSref: service.sref});
     }
 })
         
@@ -43,16 +43,36 @@ angular.module('app.controllers', [])
 	};
 })
 
-.controller('serviceCtrl', function($scope, $rootScope, $stateParams, LoginService){
+.controller('serviceCtrl', function($scope, $rootScope, $stateParams, LoginService, RatingService, $ionicPopup, $http){
 	$scope.loginService = LoginService;
+	$scope.form = {};
+	$scope.submitForm = function(){
+		RatingService.sendRating($scope.service.service_id, $scope.form.rating, $scope.form.comment).then(
+			function(resolve){$scope.ratingSection = resolve;},
+			function(reject){
+				var alertPopup = $ionicPopup.alert({
+					title: "Error",
+					template: "Error submitting rating: "+reject
+				});
+
+				alertPopup.then(function(res){});
+			}
+		);
+	};
 	$scope.service = {};
 
 	for(var i=0;i<$rootScope.servicesData.length;i++){
-		if($rootScope.servicesData[i].sref == $stateParams.serviceId){
+		if($rootScope.servicesData[i].sref == $stateParams.serviceSref){
 			$scope.service.data = $rootScope.servicesData[i].data;
 			$scope.service.title = $rootScope.servicesData[i].name;
+			$scope.service.service_id =$rootScope.servicesData[i].service_id;
 		}
 	}
+
+	$http.get($rootScope.backendRatingUrl+'?service_id='+$scope.service.service_id).then(function(response){
+		if(response.data.substring(0,2) == 'E ') $scope.ratingSection='';
+		else $scope.ratingSection = response.data;
+	},function(reject){});
 })
    
 .controller('signUpCtrl', function($scope, SignupService, $ionicPopup, $state) {

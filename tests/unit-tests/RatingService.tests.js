@@ -37,7 +37,7 @@ describe('RatingService', function(){
 		it('should successfully resolve if the request passes through', function(){
 			httpBackend.expectPOST(rootScope.backendRatingUrl);
 
-			RatingService.sendRating(5, "Great!").then(
+			RatingService.sendRating(1, 5, "Great!").then(
 				function(resolve){
 					expect(true).toBe(true);
 				},

@@ -127,33 +127,35 @@ u {
 
 
 <!--..........................................................RATING......................................................-->
+      <div class="ratingSection" compile="ratingSection">    
+      </div>
 
       <div ng-show="loginService.isLoggedIn()">
         <br>
         <hr>
 
-        <form action="javascript:void(0);" class="list ratingForm">
+        <form ng-submit="submitForm()" action="javascript:void(0);" class="list ratingForm">
           <fieldset class="score">
            
-            <input type="radio" id="score-5" name="score" value="5"/>
+            <input type="radio" id="score-5" name="score" ng-model="form.rating" value="5"/>
             <label title="5 stars" for="score-5">5 stars</label>
             
-            <input type="radio" id="score-4" name="score" value="4"/>
+            <input type="radio" id="score-4" name="score" ng-model="form.rating" value="4"/>
             <label title="4 stars" for="score-4">4 stars</label>
             
-            <input type="radio" id="score-3" name="score" value="3"/>
+            <input type="radio" id="score-3" name="score" ng-model="form.rating" value="3"/>
             <label title="3 stars" for="score-3">3 stars</label>
             
-            <input type="radio" id="score-2" name="score" value="2"/>
+            <input type="radio" id="score-2" name="score" ng-model="form.rating" value="2"/>
             <label title="2 stars" for="score-2">2 stars</label>
             
-            <input type="radio" id="score-1" name="score" value="1"/>
+            <input type="radio" id="score-1" name="score" ng-model="form.rating" value="1"/>
             <label title="1 stars" for="score-1">1 stars</label>
             
           </fieldset>
 
           <label class="item item-input">
-            <textarea placeholder="Comments" rows="8"></textarea>
+            <textarea ng-model="form.comment" placeholder="Comments" rows="8"></textarea>
           </label>
 
           <button class="button button-block button-positive">Submit</button>

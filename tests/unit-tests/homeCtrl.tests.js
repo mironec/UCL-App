@@ -28,12 +28,6 @@ describe('homeCtrl', function(){
 			expect($scope.serviceFilter(parentService)).toEqual(true);
 		});
 
-		it('should attach the correct sref', function(){
-			expect($scope.services[0].sref).toEqual('example');
-			expect($scope.services[1].sref).toEqual('example1');
-			expect($scope.services[2].sref).toEqual('example2');
-		});
-
 		it('should go to the correct state', function(){
 			$scope.clicked(parentService);
 			expect($state.go).toHaveBeenCalledWith(jasmine.any(String),{serviceId: parentService.sref});

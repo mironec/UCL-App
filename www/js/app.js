@@ -18,7 +18,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
   });
 
   $rootScope.$on( "$stateChangeStart", function(event, next, current) {
-      if(next.name == "login" && LoginService.loggedIn()){
+      if(next.name == "login" && LoginService.isLoggedIn()){
         event.preventDefault();
         $state.go('menu.home');
       }
@@ -32,7 +32,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
         }
   });
 
-  $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl;
-  $rootScope.backendLoginUrl = b+"/atos/login.php";
-  $rootScope.backendSignupUrl = b+"/atos/register.php";
+  $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl+"/atos/";
+  $rootScope.backendLoginUrl = b+"login.php";
+  $rootScope.backendSignupUrl = b+"register.php";
+  $rootScope.backendRatingUrl = b+"rating.php";
 }])

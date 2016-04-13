@@ -28,11 +28,11 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    plugins: [
+    /*plugins: [
         'karma-phantomjs-launcher',
         'karma-jasmine',
         'karma-ng-html2js-preprocessor'
-    ],
+    ],*/
 
 
     // preprocess matching files before serving them to the browser
@@ -44,7 +44,7 @@ module.exports = function(config) {
     ngHtml2JsPreprocessor: {
         // If your build process changes the path to your templates,
         // use stripPrefix and prependPrefix to adjust it.
-        stripPrefix: "../www/",
+        stripPrefix: ".*/www/",
         //prependPrefix: "templates/",
 
         // the name of the Angular module to create

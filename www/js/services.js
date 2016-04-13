@@ -23,7 +23,7 @@ angular.module('app.services', [])
 				function(response){
 					if(!(response instanceof Object)) {deferred.reject(); return;}
 					var data = response.data;
-					if(data.startsWith("S ")){
+					if(data.substring(0,2) == "S "){
 						loggedIn = true;
 						loginToken = data.substring(2);
 						deferred.resolve();
@@ -51,8 +51,8 @@ angular.module('app.services', [])
 				function(response){
 					if(!(response instanceof Object)) {deferred.reject(); return;}
 					var data = response.data;
-					if(data.startsWith("S ")) deferred.resolve(data.substring(2));
-					else if(data.startsWith("E ")) deferred.reject(data.substring(2));
+					if(data.substring(0,2) == "S ") deferred.resolve(data.substring(2));
+					else if(data.substring(0,2) == "E ") deferred.reject(data.substring(2));
 					else deferred.reject(data);
 				},
 				function(reject){deferred.reject("Check your internet connection.");}
@@ -61,4 +61,28 @@ angular.module('app.services', [])
 			return deferred.promise;
 		}
 	}
-}]);
+}])
+
+.factory('RatingService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
+	return {
+		sendRating: function(rating, comment){
+			var deferred = $q.defer();
+
+			$http.post($rootScope.backendRatingUrl,{rating: rating, comment: comment}).then(
+				function(response){
+					if(!(response instanceof Object)) {deferred.reject(); return;}
+					var data = response.data;
+					deferred.resolve(response.data);
+					/*if(data.substring(0,2) == "S ") deferred.resolve(data.substring(2));
+					else if(data.substring(0,2) == "E ") deferred.reject(data.substring(2));
+					else deferred.reject(data);*/
+				},
+				function(reject){deferred.reject("Check your internet connection.");}
+			);
+
+			return deferred.promise;
+		}
+	}
+}])
+
+;

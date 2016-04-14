@@ -3,10 +3,11 @@ describe('LoginService', function(){
 	beforeEach(module('app'));
 
 	var LoginService;
-	var rootScope = {backendLoginUrl: "http://localhost/atos/login.php"};
+	var rootScope;
 	var httpBackend, loginPageHandle;
 
 	beforeEach(inject(function($injector){
+		rootScope = $injector.get('$rootScope');
 		httpBackend = $injector.get('$httpBackend');
 
 		loginPageHandle = httpBackend.when('POST', rootScope.backendLoginUrl).respond(

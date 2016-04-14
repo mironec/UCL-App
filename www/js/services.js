@@ -68,7 +68,7 @@ angular.module('app.services', [])
 		sendRating: function(serviceId, rating, comment){
 			var deferred = $q.defer();
 
-			$http.post($rootScope.backendRatingUrl,{"service_id": serviceId, rating: rating, comment: comment},{headers: {Authorization: "JWT "+LoginService.getLoginToken()}}).then(
+			$http.post($rootScope.backendRatingUrl,{"service_id": serviceId, rating: rating, comment: comment, auth: "JWT "+LoginService.getLoginToken()},{headers: {Authorization: "JWT "+LoginService.getLoginToken()}}).then(
 				function(response){
 					if(!(response instanceof Object)) {deferred.reject(); return;}
 					var data = response.data;

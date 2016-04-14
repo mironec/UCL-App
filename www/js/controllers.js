@@ -48,7 +48,11 @@ angular.module('app.controllers', [])
 	$scope.form = {};
 	$scope.submitForm = function(){
 		RatingService.sendRating($scope.service.service_id, $scope.form.rating, $scope.form.comment).then(
-			function(resolve){$scope.ratingSection = resolve;},
+			function(resolve){
+				$scope.ratingSection = resolve;
+				$scope.form.rating = 0;
+				$scope.form.comment = '';
+			},
 			function(reject){
 				var alertPopup = $ionicPopup.alert({
 					title: "Error",

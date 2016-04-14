@@ -32,7 +32,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
         }
   });
 
-  $rootScope.backendUrl = "http://localhost"; var b = $rootScope.backendUrl+"/atos/";
+  $rootScope.backendUrl = "http://portfolioapp.me.pn"; var b = $rootScope.backendUrl+"/";
   $rootScope.backendLoginUrl = b+"login.php";
   $rootScope.backendSignupUrl = b+"register.php";
   $rootScope.backendRatingUrl = b+"rating.php";

@@ -4,7 +4,10 @@ angular.module('app.directives', [])
 	return {
 		restrict: 'E',
 		template: function(elem, attr){
-			return '<div class="review"><span class="reviewName">'+attr.name+'</span><br /><span class="reviewComment">'+attr.comment||elem.text()+'</span></div>';
+			var score = parseInt(attr.rating);
+			return '<div class="rating item"><span class="ratingAuthor">'+attr.name+
+			'</span><span class="ratingScore">'+Array(score+1).join('★')+Array(6-score).join('☆')+'</span><br />'+
+			'<hr style="opacity: 0.15;"><span class="ratingComment">'+(attr.comment||elem.text())+'</span></div>';
 		}
 	};
 }])

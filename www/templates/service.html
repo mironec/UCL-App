@@ -96,6 +96,28 @@ u {
 .ratingForm button{
   opacity: 1.0;
 }
+
+.ratingSection .rating.item {
+  margin:auto;
+  margin-bottom:10px;
+}
+
+.ratingSection .ratingAuthor {
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 16px;
+}
+
+.ratingSection .ratingComment {
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 14px;
+}
+
+.ratingSection .ratingScore {
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  float: right;
+}
 </style>
 
 
@@ -127,13 +149,13 @@ u {
 
 
 <!--..........................................................RATING......................................................-->
-      <div class="ratingSection" compile="ratingSection">    
+      <br>
+      <hr>
+
+      <div class="ratingSection list list-inset" compile="ratingSection">
       </div>
 
       <div ng-show="loginService.isLoggedIn()">
-        <br>
-        <hr>
-
         <form ng-submit="submitForm()" action="javascript:void(0);" class="list ratingForm">
           <fieldset class="score">
            

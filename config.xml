@@ -14,6 +14,7 @@
     <access launch-external="yes" origin="http://atos.net/*" />
     <access launch-external="yes" origin="http://*.atos.net/*" />
     <access launch-external="yes" origin="mailto:*" />
+    <access origin="http://portfolioapp.me.pn" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />

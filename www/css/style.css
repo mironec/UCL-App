@@ -46,3 +46,34 @@
 .atosNormalText a:active {
 	color: #ddddff;
 }
+
+.servicePage {
+	color: #eeeeee;
+}
+
+.servicePage h2 {
+	color: #dddddd;
+	text-decoration: bold;
+	font-size: 18px;
+}
+
+.servicePage h3 {
+	color: #e0e0e0;
+	font-size: 14px;
+}
+
+.serviceSubPages {
+	color: inherit;
+	font-size: 14px;
+}
+
+.serviceSubPages ul{
+	padding-bottom: 12px;
+	padding-left: 16px;
+}
+
+.serviceSubPages li{
+	color: #ddddff;
+	font-size: 18px;
+	text-decoration: underline;
+}

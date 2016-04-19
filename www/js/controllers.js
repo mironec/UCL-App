@@ -43,7 +43,7 @@ angular.module('app.controllers', [])
 	};
 })
 
-.controller('serviceCtrl', function($scope, $rootScope, $stateParams, LoginService, RatingService, $ionicPopup, $http){
+.controller('serviceCtrl', function($scope, $rootScope, $stateParams, LoginService, RatingService, $ionicPopup, $http, $state){
 	$scope.loginService = LoginService;
 	$scope.form = {};
 	$scope.submitForm = function(){
@@ -64,12 +64,25 @@ angular.module('app.controllers', [])
 		);
 	};
 	$scope.service = {};
+	$scope.subClick = function(service){
+		$state.go('menu.service', {serviceSref: service.sref});
+	};
 
 	for(var i=0;i<$rootScope.servicesData.length;i++){
 		if($rootScope.servicesData[i].sref == $stateParams.serviceSref){
 			$scope.service.data = $rootScope.servicesData[i].data;
 			$scope.service.title = $rootScope.servicesData[i].name;
-			$scope.service.service_id =$rootScope.servicesData[i].service_id;
+			$scope.service.service_id = $rootScope.servicesData[i].service_id;
+			$scope.service.subPages = $rootScope.servicesData[i].subPages;
+			for(var j = 0;j<$scope.service.subPages.length;j++){
+				var href = $scope.service.subPages[j];
+				for(var k = 0;k<$rootScope.servicesData.length;k++){
+					var s = $rootScope.servicesData[k];
+					if(s.href == href && (s.disabled === undefined || s.disabled === false)){
+						$scope.service.subPages[j]=s;
+					}
+				}
+			}
 		}
 	}
 

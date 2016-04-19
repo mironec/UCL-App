@@ -1,43 +1,43 @@
 <style type="text/css">
   h1 {
-	font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
 }
 h3 {
-	font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 160%;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 160%;
 }
 p {
-	font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 20px;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
 blockquote {
-	font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-	font-size: 21px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 30px;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
 }
 pre {
-	font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-	font-size: 13px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 18.5714px;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
 }
 
 u {
@@ -125,25 +125,33 @@ u {
 <!--..........................................................-THE HTML......................................................-->
 
 <ion-view title="Service">
-    <ion-content overflow-scroll="true" padding="true"  class="has-header">
+    <ion-content overflow-scroll="true" padding="true"  class="has-header" style="background: url(img/PrWKOKKhSHiromnkVjc9_bg.jpg) no-repeat center; background-size: cover;">
 
 <center>
-<p style="padding: 10px; background-color: #1fb5ec;">
+<p style="padding: 10px;">
         
-       <b>  <font color="white" family='Avant Garde' size=6>{{service.title}}</font> </b>  <!--   THIS IS THE HEADER --> 
+       <b>  <font color="white" family="Avant Garde" size="6">{{service.title}}</font> </b>  <!--   THIS IS THE HEADER --> 
         
 </p>
 </center>
+        <div class="servicePage">
 
         <div>
             <hr>                            
         </div>
+        <div class="serviceSubPages" ng-show="service.subPages.length > 0">
+          Subsections:
+          <ul>
+            <li ng-repeat="ser in service.subPages" ng-click="subClick(ser)">{{ser.name}}</li>
+          </ul>
+          <hr>
+        </div>
 
-<blockquote><h1><u>SUBTITLE</u></h3></blockquote>      <!-- THIS IS FOR ANY SUBTITLES IN THIS SERVICE PAGE -->
+<!--<blockquote><h1><u>SUBTITLE</u></h3></blockquote>      <!-- THIS IS FOR ANY SUBTITLES IN THIS SERVICE PAGE -->
 
 
 
-<h3 ng-bind-html="service.data"></h3>            <!-- THIS IS THE INFORMATION ABOUT THE SERVICE -->
+<div ng-bind-html="service.data"></div>            <!-- THIS IS THE INFORMATION ABOUT THE SERVICE -->
 
 
 
@@ -185,6 +193,6 @@ u {
         </form>
       </div>
 
-
+      </div>
     </ion-content>
 </ion-view>

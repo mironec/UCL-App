@@ -1,4 +1,8 @@
-/*
+/platforms
+/bower_components
+/node_modules
+/myApp
+/plugins
 !/.gitignore
 !/www
 !/tests

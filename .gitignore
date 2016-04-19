@@ -3,12 +3,6 @@
 /node_modules
 /myApp
 /plugins
-!/.gitignore
-!/www
-!/tests
-!/backend
-!/config.xml
-/www/lib
 /www/README.md
 /www/IONIC
 /backend/vendor/composer

@@ -3,6 +3,7 @@
 !/www
 !/tests
 !/backend
+!/config.xml
 /www/lib
 /www/README.md
 /www/IONIC

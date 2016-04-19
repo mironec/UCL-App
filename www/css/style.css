@@ -1,10 +1,48 @@
-/* Empty. Add your own CSS if you like */
-
-.item.item-complex {
+/*.item.item-complex {
 	text-align: center;
 }
 
-
 .img-circle {
     border-radius: 50%;
+}*/
+
+.atosNormalText {
+	text-align: justify;
+	color: #eeeeee;
+}
+
+.atosNormalText p {
+	font-family: Lucida Sans Unicode;
+	font-size: 14px;
+	color: #eeeeee;
+}
+
+.atosNormalText h3 {
+	font-family: Lucida Sans Unicode;
+	font-size: 24px;
+	text-decoration: bold;
+	color: #eeeeee;
+}
+
+.atosNormalText h4 {
+	font-family: Lucida Sans Unicode;
+	font-size: 18px;
+	text-decoration: bold;
+	color: #eeeeee;
+}
+
+.atosNormalText a:link {
+	color: #ddddff;
+}
+
+.atosNormalText a:visited {
+	color: #ddddff;
+}
+
+.atosNormalText a:hover {
+	color: #ddddff;
+}
+
+.atosNormalText a:active {
+	color: #ddddff;
 }

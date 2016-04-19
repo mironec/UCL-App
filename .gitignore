@@ -2,6 +2,11 @@
 !/.gitignore
 !/www
 !/tests
+!/backend
 /www/lib
 /www/README.md
 /www/IONIC
+/backend/vendor/composer
+/backend/vendor/autoload.php
+/backend/vendor/lcobucci/jwt/*
+!/backend/vendor/lcobucci/jwt/src

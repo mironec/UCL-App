@@ -1,14 +1,6 @@
 angular.module('app.services', [])
 
-.factory('BlankFactory', [function(){
-
-}])
-
-.service('BlankService', [function(){
-
-}])
-
-.factory('LoginService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
+.factory('LoginService', ['$http','$rootScope','$q',function LoginServiceFactory($http,$rootScope,$q){
 	var loggedIn = false;
 	var loginToken = ""; 
 
@@ -42,7 +34,7 @@ angular.module('app.services', [])
 	}
 }])
 
-.factory('SignupService', ['$http','$rootScope','$q',function($http,$rootScope,$q){
+.factory('SignupService', ['$http','$rootScope','$q',function SignupServiceFactory($http,$rootScope,$q){
 	return {
 		signUp: function(email, pass, name, country){
 			var deferred = $q.defer();
@@ -63,7 +55,7 @@ angular.module('app.services', [])
 	}
 }])
 
-.factory('RatingService', ['$http','$rootScope','$q','LoginService',function($http,$rootScope,$q,LoginService){
+.factory('RatingService', ['$http','$rootScope','$q','LoginService',function RatingServiceFactory($http,$rootScope,$q,LoginService){
 	return {
 		sendRating: function(serviceId, rating, comment){
 			var deferred = $q.defer();

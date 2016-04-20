@@ -44,7 +44,7 @@ if($type == 'POST'){
 	$request = json_decode($postdata);
 	if(!isset($request) || !isset($request->rating) || !isset($request->comment) || !isset($request->service_id) ) {echo 'E No data.'; return;}
 	$rating = intval($request->rating);
-	$comment = $request->comment;
+	$comment = $request->comment; $comment = htmlentities($comment);
 	$service_id = intval($request->service_id);
 	if($comment === '' || !is_string($comment)) {echo 'E Empty comment.'; return;}
 	if($rating < 1 || $rating > 5) {echo 'E No rating.'; return;}

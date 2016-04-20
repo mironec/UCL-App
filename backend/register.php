@@ -17,6 +17,9 @@ $country = $request->country;
 
 if(!isset($email) || !isset($pass) || !isset($name) || !isset($country) || $email=='' || $pass=='' || $name=='' || $country=='') {echo 'E No data.'; return;}
 
+if(!preg_match("/\A[^@]+@[^@]+\z/", $email)) {echo 'E Illegal data.'; return;}
+if(!preg_match("^[a-zA-Z0-9_]+$", $name)) {echo 'E Illegal data.'; return;}
+
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (mysqli_connect_errno()) {
     printf("E Connect failed: %s\n", mysqli_connect_error());
